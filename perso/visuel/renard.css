@@ -1,0 +1,100 @@
+/** écrire les règles CSS des consignes indiquées dans la partie HTML **/
+
+/* nth-child(odd|even) */
+
+tr :nth-child(even){
+
+    background-color: #DDD;
+}
+
+tr:hover td:first-child {
+
+    background-color: #DBB ;
+
+}
+p :first-line{
+    font-weight: bold;
+    font-size: 16px;
+}
+p span{
+    display: block;
+}
+
+p ::first-letter{
+    font-weight: bold;
+    color: red;
+    font-size: 20px ;
+}
+
+#board{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #CCC;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+#board div{
+    width: 20%;
+    height: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000;
+    border-rigth: 1px solid #000;
+}
+
+div :nth-child(4n+4){
+    background-color: #1DE58B;
+
+}
+div :nth-child(4n+1){
+    background-color: #0566F1;
+
+}
+div :nth-child(4n+2){
+    background-color: #F29E09;
+
+}
+div :nth-child(4n+3){
+    background-color: #9DE042;
+
+}
+
+/* Pour animer le coeur battant linker l'animation pour chaque navigateur*/
+@-webkit-keyframes pulse {to {box-shadow: 0 0 150px 5px rgba(169, 68, 66, 1);width:120px;height:120px;}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 150px 5px rgba(169, 68, 66, 1);width:120px;height:120px;}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 150px 5px rgba(169, 68, 66, 1);width:120px;height:120px;}}
+@keyframes pulse {to {box-shadow: 0 0 150px 5px rgba(169, 68, 66, 1);width:120px;height:120px;}}
+
+#heart {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    position:relative;
+    margin-left: 600px;
+    /* l'animation repose sur l'ombrage qui donne l'impression de mouvement*/
+    box-shadow: 0 0 0 -1px rgba(169, 68, 66, 0);
+    /* définir le temps entre chaque pulsation en seconde ou millisecondes( '.75s' =0.75sec)*/
+    -webkit-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+#heart:before,
+#heart:after {
+    position:absolute;
+    content: "";
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:red;
+    top: -50%;
+    left: 0;
+}
+#heart:after {
+    left: -50%;
+    top: 0;
+}

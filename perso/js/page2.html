@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+
+<script type="text/javascript" language="javascript">
+
+    nb=Math.floor((Math.random() * 100) + 1);
+
+    //    alert(nb);
+    var nb
+    var cpt=0;
+    var joueur=prompt("essayer de deviner le nombre généré aléatoirement. Il est compris entre 1 et 100");
+    //    alert(joueur);
+
+    while(nb != joueur){
+
+        if(joueur > nb) {
+            cpt++;
+            joueur=prompt("le chiffre à trouver est plus petit");
+        }else if (nb > joueur) {
+            cpt++;
+            joueur=prompt("le chiffre à trouver est plus grand");
+        }
+    }
+
+    alert("Tu as gagné en "+cpt+ " coups !!!");
+
+</script>
+
+</body>
+
+</html>
