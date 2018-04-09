@@ -1,28 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-    <title>pixel Art 1</title>
-    <script src="pixelArt1.js" type="application/javascript"></script>
-    <link rel="stylesheet" href="pixelArt1.css">
+    <title>spaceship</title>
+
+    <style type="text/css">
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        main{
+            height: 700px;
+            background-color: #000;
+            position: relative;
+        }
+
+        #earth {
+            background-color: lightblue;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #mars {
+            background-color: red;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 250px;
+            right: 0px;
+        }
+
+
+        #spaceship{
+            background-color: yellow;
+            height: 20px;
+            width: 40px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border: 1px solid #000;
+        }
+        #spaceship::after{
+            width: 20px;
+            height: 10px;
+            background-color: yellow;
+            content: "";
+            position: absolute;
+            left:-10px;
+            top: -5px;
+            transform: rotate(30deg);
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+        #spaceship::before{
+            width: 20px;
+            height: 10px;
+            background-color: yellow;
+            content: "";
+            position: absolute;
+            left:-10px;
+            bottom: -5px;
+            transform: rotate(-30deg);
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-<p>Le but de l'exercice était de créer une image point par point à l'aide d'une boucle.</br>
-   Chacun des points est représenté par une div de 20 pixels sur 20 pixels et la totalité de</br>
-   ces div sont contenus dans une plus grande div. La boucle nous permet d'obtenir ce résultat:</p>
-
 <main>
-
-    <div id="picture1">
-
-    </div>
-
+    <div id="earth"></div>
+    <div id="mars"></div>
+    <div id="spaceship"></div>
 </main>
+
+<script type="text/javascript">
+
+    var vaisseau = document.getElementById('spaceship');
+    s = vaisseau.style; // Un petit raccourci
+    i = vaisseau.offsetLeft; // On récupère la position initiale de notre div(vaisseau).
+    j = vaisseau.offsetTop;
+
+    document.onkeydown = function(event){
+
+        //Pour assurer la compatibilité avec les navigateurs IE et non IE
+        var event = event || window.event;
+
+        keyCode = event.keyCode;
+
+        // On détecte l'événement(l'appui touche), puis selon la fleche sur cette touche, on incrémente ou
+        // décrémente les variables  de position i et j ds ce cas de 2 px a chaque evénement et pr 1 px
+        // il suffit de mettre (j--; ou j++)
+        switch(keyCode){
+            case 38:
+                j-= 6;
+                break;
+            case 40:
+                j+= 6;
+                break;
+            case 37:
+                i-= 6;
+                break;
+            case 39:
+                i+= 6;
+                break;
+        }
+        // Et on applique l'événement à la div :
+        s.left = String(i)+ 'px';
+        s.top = String(j)+ 'px';
+    }
+
+</script>
+
+</body>
+<p> Utilisation des fléches clavier pour faire se mouvoir le vaisseau spatial dans l'espace. Utilisation des event:</br>
+    keycode, onkeydown et des variables de positions.
+    </p>
 
     <a href="https://azazel54.github.io/cv/">Retour à l'accueil</a>
 
